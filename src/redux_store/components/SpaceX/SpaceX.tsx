@@ -54,7 +54,7 @@ const SpaceX = () => {
         payloads:
         {loadPayload()}
       </div>
-      <Button onClick={() => getLaunches()}>Refresh Data</Button>
+      <Button onClick={() => dispatch(getLaunches())}>Refresh Data</Button>
       <Button
         onClick={() =>
           dispatch(changePayload(["This data has been", "Overrided manually"]))
