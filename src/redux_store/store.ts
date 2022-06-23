@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import spacexReducer from "./reducer/spacexReducer";
+import spacexReducer from "./spacexReducer";
 
 export const store = configureStore({
   reducer: {

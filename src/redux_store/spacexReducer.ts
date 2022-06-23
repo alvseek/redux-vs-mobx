@@ -1,17 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Ilinks } from "../../../mobx_store/SpaceXStore";
-import { getLaunches } from "../thunk/spacexThunk";
-
-export interface LaunchState {
-  isLoadingGetLaunch: boolean;
-  launch: {
-    name?: string;
-    links?: Ilinks;
-  } | null;
-  links: Ilinks | null;
-  payloads: string[];
-  errorGetLaunch: any;
-}
+import { LaunchState } from "../interface/ILaunchState";
+import { getLaunches } from "./spacexThunk";
 
 const initialState: LaunchState = {
   isLoadingGetLaunch: false,

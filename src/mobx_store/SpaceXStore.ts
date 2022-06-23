@@ -1,35 +1,16 @@
 import { makeAutoObservable } from "mobx";
 import React from "react";
-
-export interface Ilinks {
-  patch: {
-    small: string;
-    large: string;
-  };
-  reddit: {
-    campaign: string;
-    launch: string;
-    media: string;
-    recovery: string;
-  };
-  flickr: {
-    small: string[];
-    original: string[];
-  };
-  pressKit: string;
-  webCast: string;
-  youtube_id: string;
-  article: string;
-  wikipedia: string;
-}
+import { Ilinks } from "../interface/ILinks";
 
 class SpaceXStoreClass {
   private _links?: Ilinks;
   private _payloads: string[] = [""];
+  public state = "";
 
   constructor() {
     makeAutoObservable(this);
-    this.fetchData();
+    var result = this.fetchData();
+    console.log(result);
   }
 
   get links() {
@@ -45,13 +26,17 @@ class SpaceXStoreClass {
   }
 
   public async fetchData() {
-    const spaceXdata = await fetch(
-      "https://api.spacexdata.com/v4/launches/latest"
-    );
-    spaceXdata.json().then((value) => {
-      this._links = value.links;
-      this._payloads = value.payloads;
-    });
+    try {
+      const spaceXdata = await fetch(
+        "https://api.spacexdata.com/v4/launches/latest"
+      );
+      const data = await spaceXdata.json();
+      this._links = data.links;
+      this._payloads = data.payloads;
+      this.state = "success";
+    } catch {
+      this.state = "failed";
+    }
   }
 }
 

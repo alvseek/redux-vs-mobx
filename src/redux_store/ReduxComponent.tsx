@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
-import SpaceX from "./components/SpaceX/SpaceX";
-import { store } from "./redux/store";
+import SpaceX from "./SpaceX";
+import { store } from "./store";
 
 const ReduxComponent = () => {
   return (

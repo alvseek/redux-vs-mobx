@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { changePayload } from "../../redux/reducer/spacexReducer";
-import { AppDispatch, RootState } from "../../redux/store";
-import { getLaunches } from "../../redux/thunk/spacexThunk";
+import { changePayload } from "./spacexReducer";
+import { AppDispatch, RootState } from "./store";
+import { getLaunches } from "./spacexThunk";
 
 const SpaceX = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -63,27 +63,6 @@ const SpaceX = () => {
         Override Data Manually
       </Button>
     </>
-
-    // <div
-    //   style={{
-    //     textAlign: "left",
-    //   }}
-    // >
-    //   {spacexReducer.isLoadingGetLaunch ? "Loading" : ""}
-    //   {spacexReducer.launch !== null && (
-    //     <>
-    //       name: {spacexReducer.launch.name}
-    //       <br />
-    //       links:
-    //       <ul>
-    //         {spacexReducer.launch.links?.map((item, i) => (
-    //           <li key={`${i + 1}`}>{item}</li>
-    //         ))}
-    //       </ul>
-    //     </>
-    //   )}
-    //   {spacexReducer.errorGetLaunch !== null ? "error" : ""}
-    // </div>
   );
 };
 
