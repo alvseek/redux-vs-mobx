@@ -1,11 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { Ilinks } from "../../../mobx_store/SpaceXStore";
 import { getLaunches } from "../thunk/spacexThunk";
 
 export interface LaunchState {
   isLoadingGetLaunch: boolean;
   launch: {
     name?: string;
-    links?: string[];
+    links: Ilinks;
   } | null;
   errorGetLaunch: any;
 }
@@ -26,29 +27,10 @@ export const spacexSlice = createSlice({
     },
     [getLaunches.fulfilled.toString()]: (state, { payload }) => {
       state.isLoadingGetLaunch = false;
-      let links: string[] = [];
       let res = payload.data;
-      for (let key in res.links) {
-        switch (key) {
-          case "patch":
-            links = [...links, res.links.patch.large];
-            break;
-          case "reddit":
-            links = [...links, res.links.reddit.launch];
-            break;
-          case "webcast":
-            links = [...links, res.links.webcast];
-            break;
-          case "wikipedia":
-            links = [...links, res.links.wikipedia];
-            break;
-          default:
-            break;
-        }
-      }
       state.launch = {
         name: res.name,
-        links,
+        links: res.links,
       };
     },
     [getLaunches.rejected.toString()]: (state, { payload }) => {
