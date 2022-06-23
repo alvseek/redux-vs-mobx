@@ -25,7 +25,7 @@ export interface Ilinks {
 
 class SpaceXStoreClass {
   private _links?: Ilinks;
-  private _payload?: string[];
+  private _payloads?: string[];
 
   constructor() {
     makeAutoObservable(this);
@@ -36,12 +36,12 @@ class SpaceXStoreClass {
     return this._links;
   }
 
-  get payload() {
-    return this._payload;
+  get payloads() {
+    return this._payloads;
   }
 
-  set payload(value) {
-    this._payload = value;
+  set payloads(value) {
+    this._payloads = value;
   }
 
   public async fetchData() {
@@ -50,6 +50,7 @@ class SpaceXStoreClass {
     );
     spaceXdata.json().then((value) => {
       this._links = value.links;
+      this._payloads = value.payloads;
     });
   }
 }

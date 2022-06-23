@@ -5,10 +5,13 @@ import { SpaceXStoreContext } from "./SpaceXStore";
 export const MobXComponent: React.FC = () => {
   const SpaceXStore = useContext(SpaceXStoreContext);
 
-  const loadPayload = () => {
-    return SpaceXStore.payload?.map((element) => <>{element}</>);
-  };
-
+  const loadPayload = () => (
+    <ul>
+      {SpaceXStore.payloads?.map((element) => (
+        <li>{element}</li>
+      ))}
+    </ul>
+  );
   return (
     <>
       <div>
@@ -39,7 +42,7 @@ export const MobXComponent: React.FC = () => {
       <div>youtube id: {SpaceXStore.links?.youtube_id}</div>
       <div>article: {SpaceXStore.links?.article}</div>
       <div>wikipedia: {SpaceXStore.links?.wikipedia}</div>
-      <div>{loadPayload()}</div>
+      <div>payloads: {loadPayload()}</div>
     </>
   );
 };
