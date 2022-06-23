@@ -52,11 +52,7 @@ const SpaceX = () => {
       <div>wikipedia: {SpaceXStore.links?.wikipedia}</div>
       <div>
         payloads:
-        <ul>
-          {SpaceXStore.payloads?.map((element) => (
-            <li>{element}</li>
-          ))}
-        </ul>
+        {loadPayload()}
       </div>
       <Button onClick={() => getLaunches()}>Refresh Data</Button>
       <Button
