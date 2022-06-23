@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
+import MobXComponent from "./mobx_store/MobXComponent";
 
 function App() {
   return (
@@ -8,7 +9,7 @@ function App() {
       <header className="App-header">
         {/* INSERT REDUX_COMPONENT.tsx LOAD HERE */}
 
-        {/* INSERT MOBX_COMPONENT.tsx LOAD HERE */}
+        <MobXComponent />
       </header>
     </div>
   );
