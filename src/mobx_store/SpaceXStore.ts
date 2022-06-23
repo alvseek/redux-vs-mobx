@@ -25,7 +25,7 @@ export interface Ilinks {
 
 class SpaceXStoreClass {
   private _links?: Ilinks;
-  private _payloads?: string[];
+  private _payloads: string[] = [""];
 
   constructor() {
     makeAutoObservable(this);
@@ -40,7 +40,7 @@ class SpaceXStoreClass {
     return this._payloads;
   }
 
-  set payloads(value) {
+  set payloads(value: string[]) {
     this._payloads = value;
   }
 

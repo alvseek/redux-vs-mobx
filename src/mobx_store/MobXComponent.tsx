@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { observer } from "mobx-react-lite";
 import { SpaceXStoreContext } from "./SpaceXStore";
+import { Button } from "react-bootstrap";
 
 export const MobXComponent: React.FC = () => {
   const SpaceXStore = useContext(SpaceXStoreContext);
@@ -43,6 +44,14 @@ export const MobXComponent: React.FC = () => {
       <div>article: {SpaceXStore.links?.article}</div>
       <div>wikipedia: {SpaceXStore.links?.wikipedia}</div>
       <div>payloads: {loadPayload()}</div>
+      <Button onClick={() => SpaceXStore.fetchData()}>Refresh Data</Button>
+      <Button
+        onClick={() =>
+          (SpaceXStore.payloads = ["This data has been", "Overrided manually"])
+        }
+      >
+        Override Data Manually
+      </Button>
     </>
   );
 };
