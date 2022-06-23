@@ -30,7 +30,7 @@ export const MobXComponent: React.FC = () => {
           <li>media: {SpaceXStore.links?.reddit.media} </li>
           <li>recovery: {SpaceXStore.links?.reddit.recovery} </li>
         </ul>
-      </div>{" "}
+      </div>
       <div>
         flickr:
         <ul>
